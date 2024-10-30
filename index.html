@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exibição de Vídeo</title>
+    <title>Upload e Exibição de Vídeo</title>
 </head>
 <body>
 
-<h1>Exibindo um vídeo</h1>
+<h1>Enviar um novo vídeo</h1>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="video" accept="video/mp4,video/webm,video/ogg" required>
+    <button type="submit">Enviar Vídeo</button>
+</form>
 
-<!-- Elemento de vídeo no HTML -->
+<h1>Último vídeo enviado</h1>
 <video id="videoPlayer" width="640" height="360" controls>
     <source src="" type="video/mp4">
     Seu navegador não suporta o elemento de vídeo.
 </video>
 
 <script>
-// Usando JavaScript para obter o caminho do vídeo do arquivo PHP
+// Carrega o vídeo mais recente
 fetch('video_data.php')
     .then(response => response.json())
     .then(data => {
