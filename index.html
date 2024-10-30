@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibição de Vídeo</title>
+</head>
+<body>
+
+<h1>Exibindo um vídeo</h1>
+
+<!-- Elemento de vídeo no HTML -->
+<video id="videoPlayer" width="640" height="360" controls>
+    <source src="" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+</video>
+
+<script>
+// Usando JavaScript para obter o caminho do vídeo do arquivo PHP
+fetch('video_data.php')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('videoPlayer').querySelector('source').src = data.videoPath;
+        document.getElementById('videoPlayer').load();
+    })
+    .catch(error => console.error('Erro ao carregar o vídeo:', error));
+</script>
+
+</body>
+</html>
